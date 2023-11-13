@@ -18,11 +18,11 @@ const Receipts = () => {
       <Accordion.Item value="apple">
         <Accordion.Control>Apple</Accordion.Control>
         <Accordion.Panel>
-          <Accordion chevron={null} bg={`blue`}>
+          <Accordion chevron={null}>
             <Accordion.Item value="test">
               <Accordion.Control>Test</Accordion.Control>
               <Accordion.Panel>
-                <Accordion chevron={null} bg={`red`}>
+                <Accordion chevron={null}>
                   <Accordion.Item value="test-2">
                     <Accordion.Control>Test-2</Accordion.Control>
                     <Accordion.Panel>Content</Accordion.Panel>
