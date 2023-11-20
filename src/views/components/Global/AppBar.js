@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Text, Flex, Box, Grid, Center, rem } from "@mantine/core";
 import { IconAlignLeft, IconSearch, IconBell } from "@tabler/icons-react";
 
@@ -6,43 +6,6 @@ const appbarItems = [
   {
     id: 1,
     content: (
-      // <Box px={10} py={5} bg="gray.3">
-      //   <Grid>
-      //     <Grid.Col span={2}>
-      //       <Flex gap="md" justify="flex-start" align="center">
-      //         <IconAlignLeft />
-      //       </Flex>
-      //     </Grid.Col>
-      //     <Grid.Col span={8}>
-      //       <Flex gap="md" justify="center" align="center"></Flex>
-      //     </Grid.Col>
-      //     <Grid.Col span={2}>
-      //       <Flex gap="md" justify="flex-end" align="center">
-      //         <Box
-      //           style={{
-      //             display: "flex",
-      //             alignItems: "center",
-      //             justify: "space-around",
-      //             gap: "xl",
-      //             marginRight: "4px",
-      //           }}
-      //         >
-      //           <Box style={{ marginRight: "10px" }}>
-      //             <IconSearch size={`15px`} />
-      //           </Box>
-      //           <Box>
-      //             <Avatar
-      //               size="sm"
-      //               bg="white"
-      //               radius="md"
-      //               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
-      //             />
-      //           </Box>
-      //         </Box>
-      //       </Flex>
-      //     </Grid.Col>
-      //   </Grid>
-      // </Box>
       <Box px={10} py={5} bg="gray.3">
         <Grid>
           <Grid.Col span={2}>
@@ -59,7 +22,6 @@ const appbarItems = [
                 style={{
                   width: "150px",
                   backgroundColor: "var(--mantine-color-gray-0)",
-                  // border: "1px solid var(--mantine-color-gray-4)",
                   borderRadius: "15px",
                 }}
               ></Box>
@@ -200,22 +162,31 @@ const appbarItems = [
   // ... more items as needed
 ];
 
-const AppBar = ({ selectedItem, setItem, appBar }) => {
+const AppBar = ({ setItem, appBar, openCustomizeDrawer  }) => {
+  const [selectedItemId, setSelectedItemId] = useState(null);
+
   const handleItemClick = (item) => {
     setItem(item);
     appBar(item.content);
+    setSelectedItemId(item.id);
+    openCustomizeDrawer(`AppBar-${item.id}`);
   };
 
   return (
     <Grid>
       {appbarItems.map((item) => (
         <Grid.Col key={item.id} span={6}>
-          <Box onClick={() => handleItemClick(item)}>
+          <Box
+            onClick={() => handleItemClick(item)}
+            style={{
+              border: selectedItemId === item.id ? "1px solid blue" : "none",
+            }}
+          >
             {item.content}
-            <Center>
-              <Text size="xs">AppBar-{item.id}</Text>
-            </Center>
           </Box>
+          <Center>
+            <Text size="xs">AppBar-{item.id}</Text>
+          </Center>
         </Grid.Col>
       ))}
     </Grid>

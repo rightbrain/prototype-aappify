@@ -5,7 +5,6 @@ import NavbarSegmented from "./views/components/SideNavbar/NavbarSegmented";
 import ResponsivePhone from "./views/components/ResponsivePhone";
 import { Drawer } from "@mantine/core";
 import CategoryCustomize from "./views/components/Customize/CategoryCustomize";
-import Index from "./views/components/AppBar/Index";
 
 const theme = createTheme({
   fontFamily: "Open Sans, sans-serif",
@@ -19,6 +18,12 @@ function App() {
   const [selectedAppBarItem, setSelectedAppBarItem] = useState(null);
 
   const [isCategoryCustomizeOpen, setIsCategoryCustomizeOpen] = useState(false);
+  const [customizeDrawerTitle, setCustomizeDrawerTitle] = useState("");
+
+  const openCustomizeDrawer = (title) => {
+    setCustomizeDrawerTitle(title);
+    setIsCategoryCustomizeOpen(true);
+  };
 
   // Function to update the selected AppBar item in the state
   const onItemClick = (item) => {
@@ -56,6 +61,7 @@ function App() {
             selectNavBar3={selectNavBar3}
             setSelectNavBar3={setSelectNavBar3}
             onNavBarItemClick={onNavBarItemClick}
+            openCustomizeDrawer={openCustomizeDrawer}
           />
         </Grid.Col>
         <Grid.Col span={3}>
@@ -74,14 +80,14 @@ function App() {
         <Grid.Col span={4}>
           {selectAppBar ? (
             <Drawer
-              title="Customize"
+              title={`${customizeDrawerTitle} Customize`}
               opened={isCategoryCustomizeOpen}
               onClose={() => setIsCategoryCustomizeOpen(false)}
               position="right"
               size={350}
               transitionProps={{
                 transition: "fade",
-                duration: 1000,
+                duration: 800,
                 timingFunction: "linear",
               }}
             >

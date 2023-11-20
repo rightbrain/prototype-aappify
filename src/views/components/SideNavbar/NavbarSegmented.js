@@ -37,7 +37,6 @@ import classes from "./NavbarSegmented.module.css";
 import Appbar from "../Global/AppBar";
 import Navbar from "../Global/Navbar";
 import Drawer2 from "../Global/Drawer";
-import Index from "../AppBar/Index";
 import Order from "../Order/Order";
 import Receipts from "../Receipts/Receipts";
 import Reviews from "../Reviews/Reviews";
@@ -74,6 +73,7 @@ const NavbarSegmented = ({
   selectNavBar3,
   setSelectNavBar3,
   onNavBarItemClick,
+  openCustomizeDrawer,
 }) => {
   const [section, setSection] = useState("account");
   const [active, setActive] = useState("Appbar");
@@ -214,12 +214,11 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
         <div>
-          {/* <h3>Order Drawer Content</h3> */}
           <Order />
         </div>
       </Drawer>
@@ -233,7 +232,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -249,7 +248,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -265,7 +264,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -283,7 +282,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -301,7 +300,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -319,7 +318,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -339,7 +338,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -364,7 +363,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -447,17 +446,10 @@ const NavbarSegmented = ({
         size={500}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
-        {/* <Index
-          Item={selectAppBar}
-          setItem={setSelectAppBar}
-          Item2={selectAppBar2}
-          setItem2={setSelectAppBar2}
-          appBar={onItemClick}
-        /> */}
         <Appbar
           Item={selectAppBar}
           setItem={setSelectAppBar}
@@ -466,6 +458,7 @@ const NavbarSegmented = ({
           Item3={selectAppBar3}
           setItem3={setSelectAppBar3}
           appBar={onItemClick}
+          openCustomizeDrawer={openCustomizeDrawer}
         />
       </Drawer>
 
@@ -478,7 +471,7 @@ const NavbarSegmented = ({
         size={500}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
@@ -502,7 +495,7 @@ const NavbarSegmented = ({
         size={300}
         transitionProps={{
           transition: "fade",
-          duration: 2000,
+          duration: 800,
           timingFunction: "linear",
         }}
       >
