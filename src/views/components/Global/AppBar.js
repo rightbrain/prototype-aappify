@@ -162,7 +162,7 @@ const appbarItems = [
   // ... more items as needed
 ];
 
-const AppBar = ({ setItem, appBar, openCustomizeDrawer  }) => {
+const AppBar = ({ setItem, appBar, openCustomizeDrawer }) => {
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const handleItemClick = (item) => {

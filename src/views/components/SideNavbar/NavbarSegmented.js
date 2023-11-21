@@ -3,17 +3,17 @@ import {
   Button,
   SegmentedControl,
   Drawer,
-  Box,
   Flex,
   Modal,
   Text,
-  Input,
   Grid,
-  Checkbox,
-  PasswordInput,
-  Anchor,
   rem,
   Select,
+  ScrollArea,
+  Card,
+  Group,
+  Image,
+  SimpleGrid,
 } from "@mantine/core";
 import {
   IconShoppingCart,
@@ -29,7 +29,6 @@ import {
   IconReceiptRefund,
   IconFlag3,
   IconFlag,
-  IconAt,
   IconLock,
 } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
@@ -40,6 +39,12 @@ import Drawer2 from "../Global/Drawer";
 import Order from "../Order/Order";
 import Receipts from "../Receipts/Receipts";
 import Reviews from "../Reviews/Reviews";
+import PageDrawer from "../Footer/PageDrawer";
+import Home from "../../image/Mobile layouts/Theme2/HOME.png";
+import Theme1 from "../../image/Mobile layouts/Theme2/HOME.png";
+// import Theme2 from "../../image/Mobile layouts/Theme2/HOME.png"
+import Theme3 from "../../image/Mobile layouts/Theme2/HOME.png";
+import Theme4 from "../../image/Mobile layouts/Theme2/HOME.png";
 
 const tabs = {
   account: [
@@ -184,6 +189,31 @@ const NavbarSegmented = ({
     <IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
   );
 
+  const transitionProps = {
+    transition: "fade",
+    duration: 800,
+    timingFunction: "linear",
+  };
+
+  const [isImageClicked, setIsImageClicked] = useState(false);
+
+  const handleImageClick = () => {
+    // Toggle the state when the image is clicked
+    setIsImageClicked(!isImageClicked);
+  };
+
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+
+  // Function to open the preview modal
+  const openPreviewModal = () => {
+    setIsPreviewModalOpen(true);
+  };
+
+  // Function to close the preview modal
+  const closePreviewModal = () => {
+    setIsPreviewModalOpen(false);
+  };
+
   return (
     <nav className={classes.navbar}>
       <div>
@@ -192,8 +222,7 @@ const NavbarSegmented = ({
           onChange={(value) => setSection(value)}
           fullWidth
           color="cyan"
-          transitionDuration={500}
-          transitionTimingFunction="linear"
+          transitionProps={transitionProps}
           data={[
             { label: "Global", value: "account" },
             { label: "Component", value: "general" },
@@ -212,11 +241,8 @@ const NavbarSegmented = ({
         onClose={() => setIsOrderDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <div>
           <Order />
@@ -230,11 +256,8 @@ const NavbarSegmented = ({
         onClose={() => setIsReceiptsDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <Receipts />
       </Drawer>
@@ -246,11 +269,8 @@ const NavbarSegmented = ({
         onClose={() => setIsReviewsDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <Reviews />
       </Drawer>
@@ -262,11 +282,8 @@ const NavbarSegmented = ({
         onClose={() => setIsMessagesDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <div>
           <h3>Messages Drawer Content</h3>
@@ -280,11 +297,8 @@ const NavbarSegmented = ({
         onClose={() => setIsCustomersDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <div>
           <h3>Customers Drawer Content</h3>
@@ -298,11 +312,8 @@ const NavbarSegmented = ({
         onClose={() => setIsRefundsDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <div>
           <h3>Refunds Drawer Content</h3>
@@ -316,11 +327,8 @@ const NavbarSegmented = ({
         onClose={() => setIsFilesDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <div>
           <h3>Files Drawer Content</h3>
@@ -336,11 +344,8 @@ const NavbarSegmented = ({
         onClose={() => setIsSettingsDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <div>
           <h3>Settings Drawer Content</h3>
@@ -349,7 +354,6 @@ const NavbarSegmented = ({
             placeholder="Pick value"
             data={["React", "Angular", "Vue", "Svelte"]}
             defaultValue="React"
-            // clearable
           />
         </div>
       </Drawer>
@@ -361,77 +365,176 @@ const NavbarSegmented = ({
         onClose={() => setIsPageDrawerOpen(false)}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
-        <div>
-          <h3>Page Drawer Content</h3>
-        </div>
+        <PageDrawer />
       </Drawer>
 
       {/* Page Modal */}
       <Modal
         opened={opened}
         onClose={close}
-        title="This is a fullscreen modal"
-        radius={0}
-        transitionProps={{ transition: "fade", duration: 2000 }}
-        lefted
+        title="All Theem Page"
+        radius="md"
+        size="calc(100vw-0)"
+        transitionProps={transitionProps}
+        scrollAreaComponent={ScrollArea.Autosize}
       >
         {/* Modal content */}
+        {/* Start Preview Modal */}
+        <Modal
+          opened={isPreviewModalOpen}
+          onClose={closePreviewModal}
+          title="Preview Modal"
+          size="sm"
+          radius="md"
+          transitionProps={transitionProps}
+        >
+          {/* Add your preview content here */}
+          <h3>Preview Content</h3>
+        </Modal>
+        {/* End Preview Modal */}
         <Grid>
-          <Grid.Col span={6}>
-            <Input.Label required>First name</Input.Label>
-            <Input
-              placeholder="Your first name"
-              description="Description below the input"
-            />
+          <Grid.Col span={3}>
+            <Card withBorder shadow="sm" radius="md">
+              <Card.Section withBorder inheritPadding py="xs">
+                <Group justify="space-between">
+                  <Text
+                    fw={700}
+                    variant="gradient"
+                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
+                  >
+                    Theme 1
+                  </Text>
+                </Group>
+              </Card.Section>
+              <Card.Section inheritPadding mt="sm" pb="md">
+                <SimpleGrid size="xs">
+                  <Image
+                    src={Theme1}
+                    radius="sm"
+                    onClick={handleImageClick}
+                    style={{ cursor: "pointer" }}
+                  />
+                </SimpleGrid>
+                {isImageClicked && (
+                  <Text mt="xs">Text to show when image is clicked</Text>
+                )}
+              </Card.Section>
+              <Flex gap="xs" justify="flex-end">
+                <Button mt="xs" size="xs" onClick={openPreviewModal}>
+                  Preview
+                </Button>
+                <Button mt="xs" size="xs">
+                  Apply
+                </Button>
+              </Flex>
+            </Card>
           </Grid.Col>
-          <Grid.Col span={6}>
-            <Input.Label required>Last namel</Input.Label>
-            <Input placeholder="Your last name" />
+          <Grid.Col span={3}>
+            <Card withBorder shadow="sm" radius="md">
+              <Card.Section withBorder inheritPadding py="xs">
+                <Group justify="space-between">
+                  <Text
+                    fw={700}
+                    variant="gradient"
+                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
+                  >
+                    Theem 2
+                  </Text>
+                </Group>
+              </Card.Section>
+              <Card.Section inheritPadding mt="sm" pb="md">
+                <SimpleGrid>
+                  <Image src={Theme3} radius="sm" />
+                </SimpleGrid>
+              </Card.Section>
+              <Flex gap="xs" mt="xs" justify="flex-end">
+                <Button size="xs" onClick={openPreviewModal}>
+                  Preview
+                </Button>
+                <Button size="xs">Apply</Button>
+              </Flex>
+            </Card>
           </Grid.Col>
-          <Grid.Col span={12}>
-            <Input.Label required>Email</Input.Label>
-            <Input
-              placeholder="Your email"
-              leftSection={<IconAt size={16} />}
-            />
+          <Grid.Col span={3}>
+            <Card withBorder shadow="sm" radius="md">
+              <Card.Section withBorder inheritPadding py="xs">
+                <Group justify="space-between">
+                  <Text
+                    fw={700}
+                    variant="gradient"
+                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
+                  >
+                    Theem 3
+                  </Text>
+                </Group>
+              </Card.Section>
+              <Card.Section inheritPadding mt="sm" pb="md">
+                <SimpleGrid>
+                  <Image src={Theme4} radius="sm" />
+                </SimpleGrid>
+              </Card.Section>
+              <Flex gap="xs" mt="xs" justify="flex-end">
+                <Button size="xs" onClick={openPreviewModal}>
+                  Preview
+                </Button>
+                <Button size="xs">Apply</Button>
+              </Flex>
+            </Card>
           </Grid.Col>
-          <Grid.Col span={12}>
-            <PasswordInput
-              leftSection={icon}
-              label="Password"
-              required
-              placeholder="Password"
-            />
+          <Grid.Col span={3}>
+            <Card withBorder shadow="sm" radius="md">
+              <Card.Section withBorder inheritPadding py="xs">
+                <Group justify="space-between">
+                  <Text
+                    fw={700}
+                    variant="gradient"
+                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
+                  >
+                    Theem 4
+                  </Text>
+                </Group>
+              </Card.Section>
+              <Card.Section inheritPadding mt="sm" pb="md">
+                <SimpleGrid>
+                  <Image src={Home} radius="sm" />
+                </SimpleGrid>
+              </Card.Section>
+              <Flex gap="xs" mt="xs" justify="flex-end">
+                <Button size="xs" onClick={openPreviewModal}>
+                  Preview
+                </Button>
+                <Button size="xs">Apply</Button>
+              </Flex>
+            </Card>
           </Grid.Col>
-          <Grid.Col span={12}>
-            <PasswordInput
-              leftSection={icon}
-              label="Confirm Passwordrd"
-              required
-              placeholder="Confirm Password"
-            />
-          </Grid.Col>
-          <Grid.Col span={12}>
-            <Checkbox
-              defaultChecked
-              label="I agree to sell my soul and privacy to this corporation"
-            />
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Anchor c={`gray`} underline="hover" target="_blank">
-              Have an account? Login
-            </Anchor>
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Flex justify="flex-end">
-              <Button>Register</Button>
-            </Flex>
+          <Grid.Col span={3}>
+            <Card withBorder shadow="sm" radius="md">
+              <Card.Section withBorder inheritPadding py="xs">
+                <Group justify="space-between">
+                  <Text
+                    fw={700}
+                    variant="gradient"
+                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
+                  >
+                    Theem 5
+                  </Text>
+                </Group>
+              </Card.Section>
+              <Card.Section inheritPadding mt="sm" pb="md">
+                <SimpleGrid>
+                  <Image src={Theme4} radius="sm" />
+                </SimpleGrid>
+              </Card.Section>
+              <Flex gap="xs" mt="xs" justify="flex-end">
+                <Button size="xs" onClick={openPreviewModal}>
+                  Preview
+                </Button>
+                <Button size="xs">Apply</Button>
+              </Flex>
+            </Card>
           </Grid.Col>
         </Grid>
       </Modal>
@@ -444,11 +547,9 @@ const NavbarSegmented = ({
         onClose={closeAppbarDrawer}
         position="left"
         size={500}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        // opacity={.25}
+        transitionProps={transitionProps}
+        overlayProps={{ backgroundOpacity: 0 }}
       >
         <Appbar
           Item={selectAppBar}
@@ -469,11 +570,8 @@ const NavbarSegmented = ({
         onClose={closeNavbarDrawer}
         position="left"
         size={500}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <Navbar
           Item={selectNavBar}
@@ -493,11 +591,8 @@ const NavbarSegmented = ({
         onClose={closeDrawerDrawer}
         position="left"
         size={300}
-        transitionProps={{
-          transition: "fade",
-          duration: 800,
-          timingFunction: "linear",
-        }}
+        overlayProps={{ backgroundOpacity: 0 }}
+        transitionProps={transitionProps}
       >
         <Drawer2 />
       </Drawer>

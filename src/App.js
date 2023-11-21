@@ -64,7 +64,7 @@ function App() {
             openCustomizeDrawer={openCustomizeDrawer}
           />
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col span={3} opacity={1}>
           <Select
             m="xs"
             placeholder="Pick value"
@@ -85,11 +85,13 @@ function App() {
               onClose={() => setIsCategoryCustomizeOpen(false)}
               position="right"
               size={350}
+              className="test"
               transitionProps={{
                 transition: "fade",
                 duration: 800,
                 timingFunction: "linear",
               }}
+              overlayProps={{ backgroundOpacity: 0 }}
             >
               <CategoryCustomize />
             </Drawer>
