@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid, MantineProvider, createTheme, Select } from "@mantine/core";
 import "@mantine/core/styles.css";
+import '@mantine/carousel/styles.css';
 import NavbarSegmented from "./views/components/SideNavbar/NavbarSegmented";
 import ResponsivePhone from "./views/components/ResponsivePhone";
 import { Drawer } from "@mantine/core";

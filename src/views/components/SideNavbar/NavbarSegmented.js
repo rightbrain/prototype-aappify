@@ -14,7 +14,11 @@ import {
   Group,
   Image,
   SimpleGrid,
+  Center,
+  Tooltip,
 } from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
+import "@mantine/carousel/styles.css";
 import {
   IconShoppingCart,
   IconLicense,
@@ -27,9 +31,9 @@ import {
   IconFileAnalytics,
   IconLayoutBottombarExpand,
   IconReceiptRefund,
-  IconFlag3,
-  IconFlag,
   IconLock,
+  IconLayersSubtract,
+  IconTemplate,
 } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./NavbarSegmented.module.css";
@@ -40,11 +44,113 @@ import Order from "../Order/Order";
 import Receipts from "../Receipts/Receipts";
 import Reviews from "../Reviews/Reviews";
 import PageDrawer from "../Footer/PageDrawer";
-import Home from "../../image/Mobile layouts/Theme2/HOME.png";
-import Theme1 from "../../image/Mobile layouts/Theme2/HOME.png";
-// import Theme2 from "../../image/Mobile layouts/Theme2/HOME.png"
-import Theme3 from "../../image/Mobile layouts/Theme2/HOME.png";
-import Theme4 from "../../image/Mobile layouts/Theme2/HOME.png";
+// Theme Image Import
+import Theme1 from "../../image/Mobile layouts/Theme1/landing page-1.png";
+import Theme2 from "../../image/Mobile layouts/Theme2/HOME.png";
+import Theme3 from "../../image/Mobile layouts/Theme3/landing page.png";
+
+// Page Image Import
+import Theme1Page1 from "../../image/Mobile layouts/Theme1/Cart-1.png";
+import Theme1Page2 from "../../image/Mobile layouts/Theme1/Checkout-1.png";
+import Theme1Page3 from "../../image/Mobile layouts/Theme1/Checkout.png";
+import Theme1Page4 from "../../image/Mobile layouts/Theme1/Detail.png";
+import Theme1Page5 from "../../image/Mobile layouts/Theme1/Profile-1.png";
+import Theme1Page6 from "../../image/Mobile layouts/Theme1/landing page-2.png";
+import Theme1Page7 from "../../image/Mobile layouts/Theme1/product list.png";
+import Theme2Page1 from "../../image/Mobile layouts/Theme2/MY CART.png";
+import Theme2Page2 from "../../image/Mobile layouts/Theme2/PRODUCT DETAILS.png";
+import Theme3Page1 from "../../image/Mobile layouts/Theme3/Cart.png";
+import Theme3Page2 from "../../image/Mobile layouts/Theme3/Product list page.png";
+import Theme3Page3 from "../../image/Mobile layouts/Theme3/ProductDetail-1.png";
+import Theme3Page4 from "../../image/Mobile layouts/Theme3/ProductDetail.png";
+import Theme3Page5 from "../../image/Mobile layouts/Theme3/Profile.png";
+
+const themes = [
+  {
+    name: "Theme 1",
+    image: Theme1,
+    page: Theme1Page1,
+    Theme1Page2,
+    Theme1Page3,
+    Theme1Page4,
+    Theme1Page5,
+    Theme1Page6,
+    Theme1Page7,
+  },
+  { name: "Theme 2", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 3",
+    image: Theme3,
+    page: Theme3Page1,
+    Theme3Page2,
+    Theme3Page3,
+    Theme3Page4,
+    Theme3Page5,
+  },
+  {
+    name: "Theme 4",
+    image: Theme1,
+    page: Theme1Page1,
+    Theme1Page2,
+    Theme1Page3,
+    Theme1Page4,
+    Theme1Page5,
+    Theme1Page6,
+    Theme1Page7,
+  },
+  { name: "Theme 5", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 6",
+    image: Theme3,
+    page: Theme3Page1,
+    Theme3Page2,
+    Theme3Page3,
+    Theme3Page4,
+    Theme3Page5,
+  },
+  {
+    name: "Theme 7",
+    image: Theme1,
+    page: Theme1Page1,
+    Theme1Page2,
+    Theme1Page3,
+    Theme1Page4,
+    Theme1Page5,
+    Theme1Page6,
+    Theme1Page7,
+  },
+  { name: "Theme 8", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 9",
+    image: Theme3,
+    page: Theme3Page1,
+    Theme3Page2,
+    Theme3Page3,
+    Theme3Page4,
+    Theme3Page5,
+  },
+  {
+    name: "Theme 10",
+    image: Theme1,
+    page: Theme1Page1,
+    Theme1Page2,
+    Theme1Page3,
+    Theme1Page4,
+    Theme1Page5,
+    Theme1Page6,
+    Theme1Page7,
+  },
+  { name: "Theme 11", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 12",
+    image: Theme3,
+    page: Theme3Page1,
+    Theme3Page2,
+    Theme3Page3,
+    Theme3Page4,
+    Theme3Page5,
+  },
+];
 
 const tabs = {
   account: [
@@ -155,17 +261,27 @@ const NavbarSegmented = ({
   const iconSection =
     section === "account" ? (
       <Flex mt="4px">
-        <IconSettings
-          className={classes.linkIcon}
-          stroke={1.5}
-          onClick={() => setIsSettingsDrawerOpen(true)}
-        />
-        <IconFlag3
-          className={classes.linkIcon}
-          stroke={1.5}
-          onClick={() => setIsPageDrawerOpen(true)}
-        />
-        <IconFlag className={classes.linkIcon} stroke={1.5} onClick={open} />
+        <Tooltip label="Settings">
+          <IconSettings
+            className={classes.linkIcon}
+            stroke={1.5}
+            onClick={() => setIsSettingsDrawerOpen(true)}
+          />
+        </Tooltip>
+        <Tooltip label="Page">
+          <IconLayersSubtract
+            className={classes.linkIcon}
+            stroke={1.5}
+            onClick={() => setIsPageDrawerOpen(true)}
+          />
+        </Tooltip>
+        <Tooltip label="Template">
+          <IconTemplate
+            className={classes.linkIcon}
+            stroke={1.5}
+            onClick={open}
+          />
+        </Tooltip>
       </Flex>
     ) : null;
 
@@ -195,24 +311,62 @@ const NavbarSegmented = ({
     timingFunction: "linear",
   };
 
-  const [isImageClicked, setIsImageClicked] = useState(false);
-
-  const handleImageClick = () => {
-    // Toggle the state when the image is clicked
-    setIsImageClicked(!isImageClicked);
-  };
-
-  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
-
-  // Function to open the preview modal
-  const openPreviewModal = () => {
-    setIsPreviewModalOpen(true);
-  };
-
   // Function to close the preview modal
   const closePreviewModal = () => {
     setIsPreviewModalOpen(false);
   };
+  // Theme
+  const [selectedTheme, setSelectedTheme] = useState(null);
+  const [selectedPage, setSelectedPage] = useState(null);
+
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+
+  // Function to open the preview modal
+  const openPreviewModal = (theme) => {
+    setIsPreviewModalOpen(true);
+    setSelectedTheme(theme);
+    setSelectedPage(theme.page);
+  };
+
+  const themeCards = themes.map((theme, index) => (
+    <Grid.Col span={2} key={index}>
+      <Card withBorder shadow="sm" radius="md">
+        <Card.Section withBorder inheritPadding py="xs">
+          <Group justify="space-between">
+            <Text
+              fw={700}
+              variant="gradient"
+              gradient={{ from: "indigo", to: "teal", deg: 360 }}
+            >
+              {theme.name}
+            </Text>
+          </Group>
+        </Card.Section>
+        <Card.Section>
+          <SimpleGrid size="sm">
+            <Center>
+              <Image
+                src={theme.image}
+                radius="sm"
+                h={200}
+                w="auto"
+                fit="contain"
+                style={{ cursor: "pointer" }}
+              />
+            </Center>
+          </SimpleGrid>
+        </Card.Section>
+        <Flex gap="xs" justify="center" style={{ borderTop: "1px solid gray" }}>
+          <Button mt="xs" size="xs" onClick={() => openPreviewModal(theme)}>
+            Preview
+          </Button>
+          <Button mt="xs" size="xs">
+            Apply
+          </Button>
+        </Flex>
+      </Card>
+    </Grid.Col>
+  ));
 
   return (
     <nav className={classes.navbar}>
@@ -386,157 +540,44 @@ const NavbarSegmented = ({
         <Modal
           opened={isPreviewModalOpen}
           onClose={closePreviewModal}
-          title="Preview Modal"
-          size="sm"
+          title="Preview"
           radius="md"
           transitionProps={transitionProps}
+          overlayProps={{
+            backgroundOpacity: 0.55,
+            blur: 3,
+          }}
         >
-          {/* Add your preview content here */}
-          <h3>Preview Content</h3>
+          <Center>
+            <Carousel
+              slideSize="50%"
+              height={400}
+              controlSize={30}
+              loop
+              dragFree
+              withIndicators
+            >
+              {selectedTheme &&
+                Object.keys(selectedTheme).map((pageKey, index) => (
+                  <Carousel.Slide key={index}>
+                    <Center>
+                      <Image
+                        src={selectedTheme[pageKey]}
+                        h={300}
+                        w={"auto"}
+                        fit="contain"
+                        radius="sm"
+                        style={{ cursor: "pointer" }}
+                      />
+                    </Center>
+                  </Carousel.Slide>
+                ))}
+            </Carousel>
+          </Center>
         </Modal>
+
         {/* End Preview Modal */}
-        <Grid>
-          <Grid.Col span={3}>
-            <Card withBorder shadow="sm" radius="md">
-              <Card.Section withBorder inheritPadding py="xs">
-                <Group justify="space-between">
-                  <Text
-                    fw={700}
-                    variant="gradient"
-                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
-                  >
-                    Theme 1
-                  </Text>
-                </Group>
-              </Card.Section>
-              <Card.Section inheritPadding mt="sm" pb="md">
-                <SimpleGrid size="xs">
-                  <Image
-                    src={Theme1}
-                    radius="sm"
-                    onClick={handleImageClick}
-                    style={{ cursor: "pointer" }}
-                  />
-                </SimpleGrid>
-                {isImageClicked && (
-                  <Text mt="xs">Text to show when image is clicked</Text>
-                )}
-              </Card.Section>
-              <Flex gap="xs" justify="flex-end">
-                <Button mt="xs" size="xs" onClick={openPreviewModal}>
-                  Preview
-                </Button>
-                <Button mt="xs" size="xs">
-                  Apply
-                </Button>
-              </Flex>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <Card withBorder shadow="sm" radius="md">
-              <Card.Section withBorder inheritPadding py="xs">
-                <Group justify="space-between">
-                  <Text
-                    fw={700}
-                    variant="gradient"
-                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
-                  >
-                    Theem 2
-                  </Text>
-                </Group>
-              </Card.Section>
-              <Card.Section inheritPadding mt="sm" pb="md">
-                <SimpleGrid>
-                  <Image src={Theme3} radius="sm" />
-                </SimpleGrid>
-              </Card.Section>
-              <Flex gap="xs" mt="xs" justify="flex-end">
-                <Button size="xs" onClick={openPreviewModal}>
-                  Preview
-                </Button>
-                <Button size="xs">Apply</Button>
-              </Flex>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <Card withBorder shadow="sm" radius="md">
-              <Card.Section withBorder inheritPadding py="xs">
-                <Group justify="space-between">
-                  <Text
-                    fw={700}
-                    variant="gradient"
-                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
-                  >
-                    Theem 3
-                  </Text>
-                </Group>
-              </Card.Section>
-              <Card.Section inheritPadding mt="sm" pb="md">
-                <SimpleGrid>
-                  <Image src={Theme4} radius="sm" />
-                </SimpleGrid>
-              </Card.Section>
-              <Flex gap="xs" mt="xs" justify="flex-end">
-                <Button size="xs" onClick={openPreviewModal}>
-                  Preview
-                </Button>
-                <Button size="xs">Apply</Button>
-              </Flex>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <Card withBorder shadow="sm" radius="md">
-              <Card.Section withBorder inheritPadding py="xs">
-                <Group justify="space-between">
-                  <Text
-                    fw={700}
-                    variant="gradient"
-                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
-                  >
-                    Theem 4
-                  </Text>
-                </Group>
-              </Card.Section>
-              <Card.Section inheritPadding mt="sm" pb="md">
-                <SimpleGrid>
-                  <Image src={Home} radius="sm" />
-                </SimpleGrid>
-              </Card.Section>
-              <Flex gap="xs" mt="xs" justify="flex-end">
-                <Button size="xs" onClick={openPreviewModal}>
-                  Preview
-                </Button>
-                <Button size="xs">Apply</Button>
-              </Flex>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <Card withBorder shadow="sm" radius="md">
-              <Card.Section withBorder inheritPadding py="xs">
-                <Group justify="space-between">
-                  <Text
-                    fw={700}
-                    variant="gradient"
-                    gradient={{ from: "indigo", to: "teal", deg: 360 }}
-                  >
-                    Theem 5
-                  </Text>
-                </Group>
-              </Card.Section>
-              <Card.Section inheritPadding mt="sm" pb="md">
-                <SimpleGrid>
-                  <Image src={Theme4} radius="sm" />
-                </SimpleGrid>
-              </Card.Section>
-              <Flex gap="xs" mt="xs" justify="flex-end">
-                <Button size="xs" onClick={openPreviewModal}>
-                  Preview
-                </Button>
-                <Button size="xs">Apply</Button>
-              </Flex>
-            </Card>
-          </Grid.Col>
-        </Grid>
+        <Grid>{themeCards}</Grid>
       </Modal>
 
       {/* Global */}
