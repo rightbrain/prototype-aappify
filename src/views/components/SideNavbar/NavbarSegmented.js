@@ -16,6 +16,7 @@ import {
   SimpleGrid,
   Center,
   Tooltip,
+  Box,
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
@@ -69,86 +70,134 @@ const themes = [
   {
     name: "Theme 1",
     image: Theme1,
-    page: Theme1Page1,
-    Theme1Page2,
-    Theme1Page3,
-    Theme1Page4,
-    Theme1Page5,
-    Theme1Page6,
-    Theme1Page7,
+    pages: [
+      { pageName: "Page 1", image: Theme1Page1 },
+      { pageName: "Page 2", image: Theme1Page2 },
+      { pageName: "Page 3", image: Theme1Page3 },
+      { pageName: "Page 4", image: Theme1Page4 },
+      { pageName: "Page 5", image: Theme1Page5 },
+      { pageName: "Page 6", image: Theme1Page6 },
+      { pageName: "Page 7", image: Theme1Page7 },
+    ],
   },
-  { name: "Theme 2", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 2",
+    image: Theme2,
+    pages: [
+      { pageName: "Page 1", image: Theme2Page1 },
+      { pageName: "Page 2", image: Theme2Page2 },
+      { pageName: "Page 3", image: Theme2 },
+    ],
+  },
   {
     name: "Theme 3",
     image: Theme3,
-    page: Theme3Page1,
-    Theme3Page2,
-    Theme3Page3,
-    Theme3Page4,
-    Theme3Page5,
+    pages: [
+      { pageName: "Page 1", image: Theme3Page1 },
+      { pageName: "Page 2", image: Theme3Page2 },
+      { pageName: "Page 3", image: Theme3Page3 },
+      { pageName: "Page 4", image: Theme3Page4 },
+      { pageName: "Page 5", image: Theme3Page5 },
+    ],
   },
   {
     name: "Theme 4",
     image: Theme1,
-    page: Theme1Page1,
-    Theme1Page2,
-    Theme1Page3,
-    Theme1Page4,
-    Theme1Page5,
-    Theme1Page6,
-    Theme1Page7,
+    pages: [
+      { pageName: "Page 1", image: Theme1Page1 },
+      { pageName: "Page 2", image: Theme1Page2 },
+      { pageName: "Page 3", image: Theme1Page3 },
+      { pageName: "Page 4", image: Theme1Page4 },
+      { pageName: "Page 5", image: Theme1Page5 },
+      { pageName: "Page 6", image: Theme1Page6 },
+      { pageName: "Page 7", image: Theme1Page7 },
+    ],
   },
-  { name: "Theme 5", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 5",
+    image: Theme2,
+    pages: [
+      { pageName: "Page 1", image: Theme2Page1 },
+      { pageName: "Page 2", image: Theme2Page2 },
+      { pageName: "Page 3", image: Theme2 },
+    ],
+  },
   {
     name: "Theme 6",
     image: Theme3,
-    page: Theme3Page1,
-    Theme3Page2,
-    Theme3Page3,
-    Theme3Page4,
-    Theme3Page5,
+    pages: [
+      { pageName: "Page 1", image: Theme3Page1 },
+      { pageName: "Page 2", image: Theme3Page2 },
+      { pageName: "Page 3", image: Theme3Page3 },
+      { pageName: "Page 4", image: Theme3Page4 },
+      { pageName: "Page 5", image: Theme3Page5 },
+    ],
   },
   {
     name: "Theme 7",
     image: Theme1,
-    page: Theme1Page1,
-    Theme1Page2,
-    Theme1Page3,
-    Theme1Page4,
-    Theme1Page5,
-    Theme1Page6,
-    Theme1Page7,
+    pages: [
+      { pageName: "Page 1", image: Theme1Page1 },
+      { pageName: "Page 2", image: Theme1Page2 },
+      { pageName: "Page 3", image: Theme1Page3 },
+      { pageName: "Page 4", image: Theme1Page4 },
+      { pageName: "Page 5", image: Theme1Page5 },
+      { pageName: "Page 6", image: Theme1Page6 },
+      { pageName: "Page 7", image: Theme1Page7 },
+    ],
   },
-  { name: "Theme 8", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 8",
+    image: Theme2,
+    pages: [
+      { pageName: "Page 1", image: Theme2Page1 },
+      { pageName: "Page 2", image: Theme2Page2 },
+      { pageName: "Page 3", image: Theme2 },
+    ],
+  },
   {
     name: "Theme 9",
     image: Theme3,
-    page: Theme3Page1,
-    Theme3Page2,
-    Theme3Page3,
-    Theme3Page4,
-    Theme3Page5,
+    pages: [
+      { pageName: "Page 1", image: Theme3Page1 },
+      { pageName: "Page 2", image: Theme3Page2 },
+      { pageName: "Page 3", image: Theme3Page3 },
+      { pageName: "Page 4", image: Theme3Page4 },
+      { pageName: "Page 5", image: Theme3Page5 },
+    ],
   },
   {
     name: "Theme 10",
     image: Theme1,
-    page: Theme1Page1,
-    Theme1Page2,
-    Theme1Page3,
-    Theme1Page4,
-    Theme1Page5,
-    Theme1Page6,
-    Theme1Page7,
+    pages: [
+      { pageName: "Page 1", image: Theme1Page1 },
+      { pageName: "Page 2", image: Theme1Page2 },
+      { pageName: "Page 3", image: Theme1Page3 },
+      { pageName: "Page 4", image: Theme1Page4 },
+      { pageName: "Page 5", image: Theme1Page5 },
+      { pageName: "Page 6", image: Theme1Page6 },
+      { pageName: "Page 7", image: Theme1Page7 },
+    ],
   },
-  { name: "Theme 11", image: Theme2, page: Theme2Page1, Theme2Page2 },
+  {
+    name: "Theme 11",
+    image: Theme2,
+    pages: [
+      { pageName: "Page 1", image: Theme2Page1 },
+      { pageName: "Page 2", image: Theme2Page2 },
+      { pageName: "Page 3", image: Theme2 },
+    ],
+  },
   {
     name: "Theme 12",
     image: Theme3,
-    page: Theme3Page1,
-    Theme3Page2,
-    Theme3Page3,
-    Theme3Page4,
-    Theme3Page5,
+    pages: [
+      { pageName: "Page 1", image: Theme3Page1 },
+      { pageName: "Page 2", image: Theme3Page2 },
+      { pageName: "Page 3", image: Theme3Page3 },
+      { pageName: "Page 4", image: Theme3Page4 },
+      { pageName: "Page 5", image: Theme3Page5 },
+    ],
   },
 ];
 
@@ -301,10 +350,6 @@ const NavbarSegmented = ({
     </div>
   );
 
-  const icon = (
-    <IconLock style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-  );
-
   const transitionProps = {
     transition: "fade",
     duration: 800,
@@ -316,16 +361,18 @@ const NavbarSegmented = ({
     setIsPreviewModalOpen(false);
   };
   // Theme
-  const [selectedTheme, setSelectedTheme] = useState(null);
   const [selectedPage, setSelectedPage] = useState(null);
 
   const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
 
   // Function to open the preview modal
+  // const openPreviewModal = (theme) => {
+  //   setIsPreviewModalOpen(true);
+  //   setSelectedPage(Object.values(theme).slice(1));
+  // };
   const openPreviewModal = (theme) => {
     setIsPreviewModalOpen(true);
-    setSelectedTheme(theme);
-    setSelectedPage(theme.page);
+    setSelectedPage(theme.pages);
   };
 
   const themeCards = themes.map((theme, index) => (
@@ -351,7 +398,7 @@ const NavbarSegmented = ({
                 h={200}
                 w="auto"
                 fit="contain"
-                style={{ cursor: "pointer" }}
+                // style={{ cursor: "pointer" }}
               />
             </Center>
           </SimpleGrid>
@@ -501,15 +548,25 @@ const NavbarSegmented = ({
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
-        <div>
-          <h3>Settings Drawer Content</h3>
+        {/* Content */}
+        <Box style={{ height: "460px", overflow: "auto" }}>
           <Select
             label="Your favorite library"
             placeholder="Pick value"
             data={["React", "Angular", "Vue", "Svelte"]}
             defaultValue="React"
           />
-        </div>
+        </Box>
+
+        {/* Footer */}
+        <Box style={{ marginTop: "auto", borderTop: "1px solid gray" }}>
+          {/* Your footer goes here */}
+          <Flex justify="flex-end" mt="4px">
+            <Button size="xs" onClick={() => setIsSettingsDrawerOpen(false)}>
+              Back
+            </Button>
+          </Flex>
+        </Box>
       </Drawer>
 
       {/* Page Drawer */}
@@ -522,7 +579,20 @@ const NavbarSegmented = ({
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
-        <PageDrawer />
+        {/* Content */}
+        <Box style={{ height: "460px", overflow: "auto" }}>
+          <PageDrawer />
+        </Box>
+
+        {/* Footer */}
+        <Box style={{ marginTop: "auto", borderTop: "1px solid gray" }}>
+          {/* Your footer goes here */}
+          <Flex justify="flex-end" mt="4px">
+            <Button size="xs" onClick={() => setIsPageDrawerOpen(false)}>
+              Back
+            </Button>
+          </Flex>
+        </Box>
       </Drawer>
 
       {/* Page Modal */}
@@ -551,25 +621,69 @@ const NavbarSegmented = ({
           <Center>
             <Carousel
               slideSize="50%"
-              height={400}
+              height={420}
+              w={400}
+              bg="blue"
               controlSize={30}
               loop
               dragFree
               withIndicators
             >
-              {selectedTheme &&
-                Object.keys(selectedTheme).map((pageKey, index) => (
+              {selectedPage &&
+                selectedPage.map((page, index) => (
                   <Carousel.Slide key={index}>
-                    <Center>
-                      <Image
-                        src={selectedTheme[pageKey]}
-                        h={300}
-                        w={"auto"}
-                        fit="contain"
-                        radius="sm"
-                        style={{ cursor: "pointer" }}
-                      />
-                    </Center>
+                    <Grid.Col key={index} mt="sm">
+                      <Card withBorder shadow="sm" radius="md" mr="md">
+                        <Card.Section
+                          withBorder
+                          inheritPadding
+                          style={{ textAlign: "center" }}
+                        >
+                          <Text
+                            fw={500}
+                            variant="gradient"
+                            gradient={{
+                              from: "indigo",
+                              to: "teal",
+                              deg: 360,
+                            }}
+                          >
+                            {page.pageName}
+                          </Text>
+                        </Card.Section>
+                        <Card.Section bg="blue">
+                          <SimpleGrid size="xl">
+                            <Center>
+                              <Image
+                                src={page.image}
+                                radius="sm"
+                                h={350}
+                                w="auto"
+                                fit="contain"
+                                // style={{ cursor: "pointer" }}
+                              />
+                            </Center>
+                          </SimpleGrid>
+                        </Card.Section>
+                        {/* <Card.Section
+                          bg="blue"
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Image
+                            ml="xs"
+                            src={page.image}
+                            radius="sm"
+                            h={350}
+                            fit="contain"
+                            // style={{ cursor: "pointer" }}
+                          />
+                        </Card.Section> */}
+                      </Card>
+                    </Grid.Col>
                   </Carousel.Slide>
                 ))}
             </Carousel>
@@ -635,7 +749,20 @@ const NavbarSegmented = ({
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
-        <Drawer2 />
+        {/* Content */}
+        <Box style={{ height: "460px", overflow: "auto" }}>
+          <Drawer2 />
+        </Box>
+
+        {/* Footer */}
+        <Box style={{ marginTop: "auto", borderTop: "1px solid gray" }}>
+          {/* Your footer goes here */}
+          <Flex justify="flex-end" mt="4px">
+            <Button size="xs" onClick={closeDrawerDrawer}>
+              Back
+            </Button>
+          </Flex>
+        </Box>
       </Drawer>
     </nav>
   );
