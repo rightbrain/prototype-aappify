@@ -45,7 +45,7 @@ function App() {
 
   return (
     <MantineProvider theme={theme}>
-      <Grid>
+      <Grid className="h-full">
         <Grid.Col span={5}>
           <NavbarSegmented
             selectAppBar={selectAppBar}

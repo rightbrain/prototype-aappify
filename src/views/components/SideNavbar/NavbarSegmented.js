@@ -87,6 +87,10 @@ const themes = [
       { pageName: "Page 1", image: Theme2Page1 },
       { pageName: "Page 2", image: Theme2Page2 },
       { pageName: "Page 3", image: Theme2 },
+      { pageName: "Page 4", image: Theme2 },
+      { pageName: "Page 5", image: Theme2 },
+      { pageName: "Page 6", image: Theme2 },
+      { pageName: "Page 7", image: Theme2 },
     ],
   },
   {
@@ -120,6 +124,10 @@ const themes = [
       { pageName: "Page 1", image: Theme2Page1 },
       { pageName: "Page 2", image: Theme2Page2 },
       { pageName: "Page 3", image: Theme2 },
+      { pageName: "Page 4", image: Theme2 },
+      { pageName: "Page 5", image: Theme2 },
+      { pageName: "Page 6", image: Theme2 },
+      { pageName: "Page 7", image: Theme2 },
     ],
   },
   {
@@ -153,6 +161,10 @@ const themes = [
       { pageName: "Page 1", image: Theme2Page1 },
       { pageName: "Page 2", image: Theme2Page2 },
       { pageName: "Page 3", image: Theme2 },
+      { pageName: "Page 4", image: Theme2 },
+      { pageName: "Page 5", image: Theme2 },
+      { pageName: "Page 6", image: Theme2 },
+      { pageName: "Page 7", image: Theme2 },
     ],
   },
   {
@@ -186,6 +198,10 @@ const themes = [
       { pageName: "Page 1", image: Theme2Page1 },
       { pageName: "Page 2", image: Theme2Page2 },
       { pageName: "Page 3", image: Theme2 },
+      { pageName: "Page 4", image: Theme2 },
+      { pageName: "Page 5", image: Theme2 },
+      { pageName: "Page 6", image: Theme2 },
+      { pageName: "Page 7", image: Theme2 },
     ],
   },
   {
@@ -370,9 +386,11 @@ const NavbarSegmented = ({
   //   setIsPreviewModalOpen(true);
   //   setSelectedPage(Object.values(theme).slice(1));
   // };
+  const [previewModalTitle, setPreviewModalTitle] = useState("");
   const openPreviewModal = (theme) => {
     setIsPreviewModalOpen(true);
     setSelectedPage(theme.pages);
+    setPreviewModalTitle(`${theme.name} - Preview`);
   };
 
   const themeCards = themes.map((theme, index) => (
@@ -610,84 +628,55 @@ const NavbarSegmented = ({
         <Modal
           opened={isPreviewModalOpen}
           onClose={closePreviewModal}
-          title="Preview"
+          title={previewModalTitle}
           radius="md"
+          size="xl"
           transitionProps={transitionProps}
           overlayProps={{
             backgroundOpacity: 0.55,
             blur: 3,
           }}
         >
-          <Center>
+          {/* <Carousel
+            height={435}
+            slideSize="33.333333%"
+            slideGap="md"
+            loop
+            align="start"
+            bg="blue"
+          >
+            {selectedPage &&
+              selectedPage.map((page, index) => (
+                <Carousel.Slide key={index}>
+                  <Image src={page.image} />
+                </Carousel.Slide>
+              ))}
+          </Carousel> */}
+          <div style={{ height: 400, display: "flex" }}>
             <Carousel
-              slideSize="50%"
-              height={420}
-              w={400}
-              bg="blue"
-              controlSize={30}
+              height="100%"
+              style={{ flex: 1 }}
+              slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
+              slideGap={{ base: 0, sm: "md" }}
               loop
-              dragFree
-              withIndicators
+              align="center"
             >
               {selectedPage &&
                 selectedPage.map((page, index) => (
                   <Carousel.Slide key={index}>
-                    <Grid.Col key={index} mt="sm">
-                      <Card withBorder shadow="sm" radius="md" mr="md">
-                        <Card.Section
-                          withBorder
-                          inheritPadding
-                          style={{ textAlign: "center" }}
-                        >
-                          <Text
-                            fw={500}
-                            variant="gradient"
-                            gradient={{
-                              from: "indigo",
-                              to: "teal",
-                              deg: 360,
-                            }}
-                          >
-                            {page.pageName}
-                          </Text>
-                        </Card.Section>
-                        <Card.Section bg="blue">
-                          <SimpleGrid size="xl">
-                            <Center>
-                              <Image
-                                src={page.image}
-                                radius="sm"
-                                h={350}
-                                w="auto"
-                                fit="contain"
-                                // style={{ cursor: "pointer" }}
-                              />
-                            </Center>
-                          </SimpleGrid>
-                        </Card.Section>
-                        {/* <Card.Section
-                          bg="blue"
-                          style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Image
-                            ml="xs"
-                            src={page.image}
-                            radius="sm"
-                            h={350}
-                            fit="contain"
-                            // style={{ cursor: "pointer" }}
-                          />
-                        </Card.Section> */}
-                      </Card>
-                    </Grid.Col>
+                    <Card withBorder shadow="sm" radius="md">
+                      <Card.Section withBorder inheritPadding py="xs">
+                        <Text fw={500}>{page.pageName}</Text>
+                      </Card.Section>
+
+                      <Card.Section mt="sm">
+                        <Image src={page.image} h={320} fit="contain" />
+                      </Card.Section>
+                    </Card>
                   </Carousel.Slide>
                 ))}
             </Carousel>
-          </Center>
+          </div>
         </Modal>
 
         {/* End Preview Modal */}
@@ -750,7 +739,7 @@ const NavbarSegmented = ({
         transitionProps={transitionProps}
       >
         {/* Content */}
-        <Box style={{ height: "460px", overflow: "auto" }}>
+        <Box style={{ height: "90%", overflow: "auto" }}>
           <Drawer2 />
         </Box>
 
