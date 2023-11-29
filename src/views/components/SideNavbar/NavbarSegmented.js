@@ -440,7 +440,7 @@ const NavbarSegmented = ({
           value={section}
           onChange={(value) => setSection(value)}
           fullWidth
-          color="cyan"
+          color="#FF9209"
           transitionProps={transitionProps}
           data={[
             { label: "Global", value: "account" },
@@ -690,7 +690,8 @@ const NavbarSegmented = ({
         opened={isAppbarDrawerOpen}
         onClose={closeAppbarDrawer}
         position="left"
-        size={500}
+        size={450}
+        // w="450px"
         // opacity={.25}
         transitionProps={transitionProps}
         overlayProps={{ backgroundOpacity: 0 }}
@@ -738,8 +739,7 @@ const NavbarSegmented = ({
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
-        {/* Content */}
-        <Box style={{ height: "90%", overflow: "auto" }}>
+        <Box style={{ height: "858px", overflow: "auto" }}>
           <Drawer2 />
         </Box>
 

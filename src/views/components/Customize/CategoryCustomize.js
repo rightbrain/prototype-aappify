@@ -10,6 +10,7 @@ import {
   Stack,
   Slider,
   ScrollArea,
+  SegmentedControl,
 } from "@mantine/core";
 import { IconPlus } from "@tabler/icons-react";
 import {
@@ -24,6 +25,7 @@ import {
   IconAlignCenter,
   IconAlignJustified,
 } from "@tabler/icons-react";
+import GeneralProperties from "./GeneralProperties/GeneralProperties";
 
 const CategoryCustomize = () => {
   const [boxValue, setBoxValue] = useState(1);
@@ -63,139 +65,40 @@ const CategoryCustomize = () => {
   };
   return (
     <ScrollArea h="470px">
-      <Accordion>
-        <Accordion.Item value="category-item1">
-          <Accordion.Control>Category Item 1</Accordion.Control>
-          <Accordion.Panel>
-            <Text size="sm">
-              <Flex direction="column">
-                <Text>Background Color</Text>
-                <ColorPicker w="auto" size="lg" format="rgba" />
-              </Flex>
-              <Stack gap={0}>
-                {/* Box Radius */}
-                <Text size="sm">Box Radius</Text>
-                <Flex
-                  mih={40}
-                  bg="white"
-                  gap="xs"
-                  justify="center"
-                  align="center"
-                  direction="row"
-                  wrap="wrap"
-                  style={{
-                    border: "1px solid #1b1c1b",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <Input
-                    type="number"
-                    size="xs"
-                    value={boxValue}
-                    w={45}
-                    readOnly
-                    style={{ borderRadius: "20px" }}
-                  />
-                  <Slider
-                    value={boxValue}
-                    onChange={handleRadiusChange}
-                    min={0}
-                    max={100}
-                    w={100}
-                    label={null}
-                  />
-                  <IconPlus
-                    onClick={handleRadiusIncrement}
-                    style={{
-                      border: "1px solid #000",
-                      borderRadius: "50%",
-                      cursor: "pointer",
-                    }}
-                  />
-                </Flex>
-                {/* padding */}
-                <Text size="sm">Padding</Text>
-                <Flex
-                  mih={40}
-                  bg="white"
-                  gap="xs"
-                  justify="center"
-                  align="center"
-                  direction="row"
-                  wrap="wrap"
-                  style={{
-                    border: "1px solid #1b1c1b",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <Input
-                    type="number"
-                    size="xs"
-                    value={paddingValue}
-                    w={45}
-                    readOnly
-                    style={{ borderRadius: "20px" }}
-                  />
-                  <Slider
-                    value={paddingValue}
-                    onChange={handlePaddingChange}
-                    min={0}
-                    max={100}
-                    w={100}
-                    label={null}
-                  />
-                  <IconPlus
-                    onClick={handlePaddingIncrement}
-                    style={{
-                      border: "1px solid #000",
-                      borderRadius: "50%",
-                      cursor: "pointer",
-                    }}
-                  />
-                </Flex>
-                {/* Margin */}
-                <Text size="sm">Margin</Text>
-                <Flex
-                  mih={40}
-                  bg="white"
-                  gap="xs"
-                  justify="center"
-                  align="center"
-                  direction="row"
-                  wrap="wrap"
-                  style={{
-                    border: "1px solid #1b1c1b",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <Input
-                    type="number"
-                    size="xs"
-                    value={marginValue}
-                    w={45}
-                    readOnly
-                    style={{ borderRadius: "20px" }}
-                  />
-                  <Slider
-                    value={marginValue}
-                    onChange={handleMarginChange}
-                    min={0}
-                    max={100}
-                    w={100}
-                    label={null}
-                  />
-                  <IconPlus
-                    onClick={handleMarginIncrement}
-                    style={{
-                      border: "1px solid #000",
-                      borderRadius: "50%",
-                      cursor: "pointer",
-                    }}
-                  />
-                </Flex>
-              </Stack>
-            </Text>
+      <SegmentedControl
+        w="420px"
+        // h="48px"
+        color="yellow"
+        data={["Properties", "Options", "Action"]}
+      />
+      <Accordion
+        chevronPosition="right"
+        variant="contained"
+        mt="24px"
+        w="420px"
+        h="56px"
+        bg="#E9E9E9"
+      >
+        <Accordion.Item value="general-properties" bg="#E9E9E9">
+          <Accordion.Control h="56px" bg="#FFFFFF" fw={600}>
+            General Properties
+          </Accordion.Control>
+          <Accordion.Panel bg="#FFFFFF">
+            <GeneralProperties />
           </Accordion.Panel>
+        </Accordion.Item>
+        <Accordion.Item mt="16px" value="icon-properties" bg="#E9E9E9">
+          <Accordion.Control h="56px" bg="#FFFFFF">
+            Icon Properties
+          </Accordion.Control>
+          <Accordion.Panel bg="#FFFFFF">Hello</Accordion.Panel>
+        </Accordion.Item>
+
+        <Accordion.Item mt="16px" value="text-properties" bg="#E9E9E9">
+          <Accordion.Control h="56px" bg="#FFFFFF">
+          Text Properties 
+          </Accordion.Control>
+          <Accordion.Panel bg="#FFFFFF">Hello</Accordion.Panel>
         </Accordion.Item>
       </Accordion>
     </ScrollArea>

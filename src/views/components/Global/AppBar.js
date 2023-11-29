@@ -173,23 +173,24 @@ const AppBar = ({ setItem, appBar, openCustomizeDrawer }) => {
   };
 
   return (
-    <Grid>
+    <>
       {appbarItems.map((item) => (
-        <Grid.Col key={item.id} span={6}>
+        <>
           <Box
+            w="375px"
+            h="64px"
+            key={item.id}
             onClick={() => handleItemClick(item)}
             style={{
               border: selectedItemId === item.id ? "1px solid blue" : "none",
             }}
           >
             {item.content}
+            <Center><Text size="xs">AppBar-{item.id}</Text></Center>
           </Box>
-          <Center>
-            <Text size="xs">AppBar-{item.id}</Text>
-          </Center>
-        </Grid.Col>
+        </>
       ))}
-    </Grid>
+    </>
   );
 };
 

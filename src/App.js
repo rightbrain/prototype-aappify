@@ -46,7 +46,7 @@ function App() {
   return (
     <MantineProvider theme={theme}>
       <Grid className="h-full">
-        <Grid.Col span={5}>
+        <Grid.Col span={4}>
           <NavbarSegmented
             selectAppBar={selectAppBar}
             setSelectAppBar={setSelectAppBar}
@@ -65,14 +65,14 @@ function App() {
             openCustomizeDrawer={openCustomizeDrawer}
           />
         </Grid.Col>
-        <Grid.Col span={3} opacity={1}>
-          <Select
+        <Grid.Col span={4} opacity={1} mt="xs">
+          {/* <Select
             m="xs"
             placeholder="Pick value"
             data={["React", "Angular", "Vue", "Svelte"]}
             // defaultValue="React"
             clearable
-          />
+          /> */}
           <ResponsivePhone
             selectedAppBarItem={selectedAppBarItem}
             selectedNavBarItem={selectedNavBarItem}
@@ -85,7 +85,7 @@ function App() {
               opened={isCategoryCustomizeOpen}
               onClose={() => setIsCategoryCustomizeOpen(false)}
               position="right"
-              size={350}
+              size={468}
               className="test"
               transitionProps={{
                 transition: "fade",
