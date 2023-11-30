@@ -26,6 +26,8 @@ import {
   IconAlignJustified,
 } from "@tabler/icons-react";
 import GeneralProperties from "./GeneralProperties/GeneralProperties";
+import IconProperties from "./IconProperties/IconProperties";
+import TextProperties from "./TextProperties/TextProperties";
 
 const CategoryCustomize = () => {
   const [boxValue, setBoxValue] = useState(1);
@@ -73,7 +75,7 @@ const CategoryCustomize = () => {
       />
       <Accordion
         chevronPosition="right"
-        variant="contained"
+        variant="separated"
         mt="24px"
         w="420px"
         h="56px"
@@ -91,14 +93,18 @@ const CategoryCustomize = () => {
           <Accordion.Control h="56px" bg="#FFFFFF">
             Icon Properties
           </Accordion.Control>
-          <Accordion.Panel bg="#FFFFFF">Hello</Accordion.Panel>
+          <Accordion.Panel bg="#FFFFFF">
+            <IconProperties />
+          </Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item mt="16px" value="text-properties" bg="#E9E9E9">
           <Accordion.Control h="56px" bg="#FFFFFF">
-          Text Properties 
+            Text Properties
           </Accordion.Control>
-          <Accordion.Panel bg="#FFFFFF">Hello</Accordion.Panel>
+          <Accordion.Panel bg="#FFFFFF">
+            <TextProperties />
+          </Accordion.Panel>
         </Accordion.Item>
       </Accordion>
     </ScrollArea>

@@ -1,94 +1,176 @@
+import React, { useState } from "react";
 import {
   Flex,
-  Box,
-  Stack,
   Text,
+  ActionIcon,
   Modal,
   ColorPicker,
-  ActionIcon,
-  Grid,
+  Stack,
 } from "@mantine/core";
-import React from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { IconColorFilter, IconColorPicker } from "@tabler/icons-react";
+import { IconColorPicker } from "@tabler/icons-react";
+
+
 
 const GeneralProperties = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  const [selectedShadowIndex, setSelectedShadowIndex] = useState(null);
+  const [selectedShapeTypeIndex, setSelectedShapeTypeIndex] = useState(null);
+  const [selectedColourOpacityIndex, setSelectedColourOpacityIndex] = useState(null);
+
+  const openColorPickerModal = () => {
+    open();
+  };
+  const handleShadowClick = (index) => {
+    setSelectedShadowIndex(index);
+  };
+  
+  const handleShapeTypeClick = (index) => {
+    setSelectedShapeTypeIndex(index);
+  };
+
+  const handleColourOpacityClick = (index) => {
+    setSelectedColourOpacityIndex(index);
+  };
+
+  const generalPropertiesData = [
+    {
+      label: "Background Color",
+      type: "color",
+      icon: IconColorPicker,
+      onClick: openColorPickerModal,
+    },
+    {
+      label: "Shadow",
+      type: "shadow",
+      options: [
+        { color: "#E9E9E9", borderRadius: "2px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" },
+        { color: "#E9E9E9", borderRadius: "2px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" },
+        { color: "#E9E9E9", borderRadius: "2px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" },
+        { color: "#E9E9E9", borderRadius: "2px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" },
+      ],
+    },
+    {
+      label: "Shape Type",
+      type: "shape",
+      options: [
+        { backgroundColor: "#E9E9E9", borderRadius: "100px", border: "1px solid #475177" },
+        { backgroundColor: "#E9E9E9", borderRadius: "2px", border: "1px solid #475177" },
+        { backgroundColor: "#E9E9E9", borderRadius: "2px", border: "1px solid #475177" },
+        
+      ],
+    },
+    {
+      label: "Colour Opacity",
+      type: "colorOpacity",
+      options: [
+        { backgroundColor: "#E9E9E9", color: "#B8BCCA", borderRadius: "2px" },
+        { backgroundColor: "#E9E9E9", color: "#959BB1", borderRadius: "2px" },
+        { backgroundColor: "#E9E9E9", color: "#656E8D", borderRadius: "2px" },
+        { backgroundColor: "#E9E9E9", color: "#475177", borderRadius: "2px" },
+      ],
+    },
+  ];
 
   return (
     <Stack>
-        {/* Background Color */}
-        <Flex direction="column" h="73px">
+      {generalPropertiesData.map((property, index) => (
+        <Flex key={index} mt="8px" direction="column" h="73px">
           <Flex justify="flex-start">
-            <Text fw={400}>Background Color</Text>
+            <Text fw={400}>{property.label}</Text>
           </Flex>
           <Flex justify="flex-end" mt="8px">
-            <ActionIcon variant="filled" aria-label="Settings">
-              <IconColorPicker
-                style={{ width: "70%", height: "70%" }}
-                onClick={() => {
-                  open();
-                }}
-                stroke={1.5}
-              />
-            </ActionIcon>
+            {property.type === "color" && (
+              <ActionIcon variant="filled" aria-label="Settings">
+                <property.icon
+                  style={{ width: "70%", height: "70%" }}
+                  onClick={property.onClick}
+                  stroke={1.5}
+                />
+              </ActionIcon>
+            )}
+            {property.type === "shadow" && (
+              <Flex gap={`10px`}>
+                {property.options.map((option, optionIndex) => (
+                  <Flex
+                    key={optionIndex}
+                    bg={option.color}
+                    h="46px"
+                    w="46px"
+                    align="center"
+                    justify="center"
+                    onClick={() => handleShadowClick(optionIndex)}
+                    style={{
+                      border: selectedShadowIndex === optionIndex ? "1px solid #FF9209" : "none",
+                    }}
+                  >
+                    <Flex
+                      bg="#FFFFFF"
+                      h="36px"
+                      w="36px"
+                      boxShadow={option.boxShadow}
+                    />
+                  </Flex>
+                ))}
+              </Flex>
+            )}
+            {property.type === "shape" && (
+              <Flex gap={`10px`}>
+                {property.options.map((option, optionIndex) => (
+                  <Flex
+                    key={optionIndex}
+                    bg={option.backgroundColor}
+                    h="46px"
+                    w="46px"
+                    align="center"
+                    justify="center"
+                    onClick={() => handleShapeTypeClick(optionIndex)}
+                    style={{
+                      border: selectedShapeTypeIndex === optionIndex ? "1px solid #FF9209" : "none",
+                    }}
+                  >
+                    <Flex
+                      bg="#FFFFFF"
+                      h="36px"
+                      w="36px"
+                      style={{
+                        borderRadius: option.borderRadius,
+                        border: option.border,
+                      }}
+                    />
+                  </Flex>
+                ))}
+              </Flex>
+            )}
+            {property.type === "colorOpacity" && (
+              <Flex gap={`10px`}>
+                {property.options.map((option, optionIndex) => (
+                  <Flex
+                    key={optionIndex}
+                    bg={option.backgroundColor}
+                    h="46px"
+                    w="46px"
+                    align="center"
+                    justify="center"
+                    onClick={() => handleColourOpacityClick(optionIndex)}
+                    style={{
+                      border: selectedColourOpacityIndex === optionIndex ? "1px solid #FF9209" : "none",
+                    }}
+                  >
+                    <Flex
+                      bg={option.color}
+                      h="36px"
+                      w="36px"
+                      style={{ borderRadius: option.borderRadius }}
+                    />
+                  </Flex>
+                ))}
+              </Flex>
+            )}
           </Flex>
         </Flex>
-        {/* Shadow */}
-        <Flex mt="8px" direction="column" h="73px">
-          {/* Set justify="flex-start" for the first Box */}
-          <Flex justify="flex-start">
-            <Text fw={400}>Shadow</Text>
-          </Flex>
-          {/* Set justify="flex-end" for the last Box */}
-          <Flex justify="flex-end" mt="8px">
-            <Grid>
-            <Grid.Col h="46px" w="46px" bg="#E9E9E9">1</Grid.Col>
-            </Grid>
-          </Flex>
-        </Flex>
-        <Flex mt="8px" direction="column" h="73px">
-          {/* Set justify="flex-start" for the first Box */}
-          <Flex justify="flex-start">
-            <Text fw={400}>Shape Type</Text>
-          </Flex>
-          {/* Set justify="flex-end" for the last Box */}
-          <Flex justify="flex-end" mt="8px">
-            <ActionIcon variant="filled" aria-label="Settings">
-              <IconColorPicker
-                style={{ width: "70%", height: "70%" }}
-                onClick={() => {
-                  open();
-                }}
-                stroke={1.5}
-              />
-            </ActionIcon>
-          </Flex>
-        </Flex>
-        <Flex mt="8px" direction="column" h="73px">
-          {/* Set justify="flex-start" for the first Box */}
-          <Flex justify="flex-start">
-            <Text fw={400}>Colour Opacity</Text>
-          </Flex>
-          {/* Set justify="flex-end" for the last Box */}
-          <Flex justify="flex-end" mt="8px">
-            <ActionIcon variant="filled" aria-label="Settings">
-              <IconColorPicker
-                style={{ width: "70%", height: "70%" }}
-                onClick={() => {
-                  open();
-                }}
-                stroke={1.5}
-              />
-            </ActionIcon>
-          </Flex>
-        </Flex>
-      <Modal
-        opened={opened}
-        onClose={close}
-        title="Background Color"
-        radius="md"
-      >
+      ))}
+      <Modal opened={opened} onClose={close} title="Background Color" radius="md">
         <ColorPicker
           fullWidth
           format="hex"
