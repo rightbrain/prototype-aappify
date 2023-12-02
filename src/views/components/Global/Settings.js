@@ -69,8 +69,7 @@ const Settings = () => {
 
       <Flex
         h="139px"
-        w="
-          402px"
+        w="402px"
         mt="16px"
         direction="column"
         //   justify="center"

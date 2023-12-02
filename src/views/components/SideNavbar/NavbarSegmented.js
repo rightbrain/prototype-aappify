@@ -564,7 +564,7 @@ const NavbarSegmented = ({
         onClose={() => setIsSettingsDrawerOpen(false)}
         position="left"
         w="450px"
-        h="836px"
+        // h="836px"
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
