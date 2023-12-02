@@ -9,12 +9,12 @@ const textPropertiesData = [
     icon: <IconColorPicker style={{ width: "70%", height: "70%" }} />,
   },
   {
-    title: "Title Text",
+    title: "Title Text (Example)",
     inputProps: {
       w: "420px",
       size: "md",
       radius: "4px",
-      placeholder: "Type your title text",
+      placeholder: "This is a simple text",
     },
   },
   {
@@ -33,20 +33,69 @@ const TextProperties = () => {
   const [selectedTitleStyleIndex, setSelectedTitleStyleIndex] = useState(null);
   const inputRef = useRef(null);
 
-  const handleSpacingClick = (index) => {
-    setSelectedSpacingIndex(index);
-  };
+  // const handleSpacingClick = (index, value) => {
+  //   setSelectedSpacingIndex(index);
+  //   if (value === "16") {
+  //     inputRef.current.style.wordSpacing = "8px";
+  //   } else if (value === "24") {
+  //     inputRef.current.style.wordSpacing = "10px";
+  //   } else if (value === "32") {
+  //     inputRef.current.style.wordSpacing = "12px";
+  //   }
+  // };
 
-  const handleTitleStyleClick = (index, style) => {
-    setSelectedTitleStyleIndex(index);
-    if (style === "Bold") {
-      inputRef.current.style.fontWeight = "bold";
-    } else if (style === "Semibold") {
-      inputRef.current.style.fontWeight = "600";
-    } else if (style === "Medium") {
-      inputRef.current.style.fontWeight = "500";
+  const handleSpacingClick = (index, value) => {
+    if (selectedSpacingIndex === index) {
+      // If the same index is clicked again, unselect it
+      setSelectedSpacingIndex(null);
+      inputRef.current.style.wordSpacing = ""; // Reset the style
+    } else {
+      // Toggle selection
+      setSelectedSpacingIndex(index);
+
+      // Apply styles based on the selected value
+      if (value === "16") {
+        inputRef.current.style.wordSpacing = "8px";
+      } else if (value === "24") {
+        inputRef.current.style.wordSpacing = "10px";
+      } else if (value === "32") {
+        inputRef.current.style.wordSpacing = "12px";
+      }
     }
   };
+  
+
+  // const handleTitleStyleClick = (index, style) => {
+  //   setSelectedTitleStyleIndex(index);
+  //   if (style === "Bold") {
+  //     inputRef.current.style.fontWeight = "800";
+  //   } else if (style === "Semibold") {
+  //     inputRef.current.style.fontWeight = "600";
+  //   } else if (style === "Medium") {
+  //     inputRef.current.style.fontWeight = "500";
+  //   }
+  // };
+
+  const handleTitleStyleClick = (index, style) => {
+    if (selectedTitleStyleIndex === index) {
+      // If the same index is clicked again, unselect it
+      setSelectedTitleStyleIndex(null);
+      inputRef.current.style.fontWeight = ""; // Reset the style
+    } else {
+      // Toggle selection
+      setSelectedTitleStyleIndex(index);
+
+      // Apply styles based on the selected style
+      if (style === "Bold") {
+        inputRef.current.style.fontWeight = "800";
+      } else if (style === "Semibold") {
+        inputRef.current.style.fontWeight = "600";
+      } else if (style === "Medium") {
+        inputRef.current.style.fontWeight = "500";
+      }
+    }
+  };
+
 
   return (
     <Stack>
@@ -76,7 +125,7 @@ const TextProperties = () => {
                       borderRadius: "4px",
                       cursor: "pointer",
                     }}
-                    onClick={() => handleSpacingClick(i)}
+                    onClick={() => handleSpacingClick(i , value)}
                   >
                     <Text>{value}</Text>
                   </Flex>
@@ -108,7 +157,7 @@ const TextProperties = () => {
           </Flex>
           {item.inputProps && (
             <Flex justify="center" mt="8px">
-              <Input {...item.inputProps} ref={inputRef} />
+              <Input {...item.inputProps} ref={inputRef} readOnly />
             </Flex>
           )}
         </Flex>

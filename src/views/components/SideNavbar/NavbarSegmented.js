@@ -65,6 +65,7 @@ import Theme3Page2 from "../../image/Mobile layouts/Theme3/Product list page.png
 import Theme3Page3 from "../../image/Mobile layouts/Theme3/ProductDetail-1.png";
 import Theme3Page4 from "../../image/Mobile layouts/Theme3/ProductDetail.png";
 import Theme3Page5 from "../../image/Mobile layouts/Theme3/Profile.png";
+import Settings from "../Global/Settings";
 
 const themes = [
   {
@@ -558,33 +559,16 @@ const NavbarSegmented = ({
 
       {/* Settings Drawer */}
       <Drawer
-        title="Settings Drawer"
+        title="Global Settings"
         opened={isSettingsDrawerOpen}
         onClose={() => setIsSettingsDrawerOpen(false)}
         position="left"
-        size={300}
+        w="450px"
+        h="836px"
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
-        {/* Content */}
-        <Box style={{ height: "460px", overflow: "auto" }}>
-          <Select
-            label="Your favorite library"
-            placeholder="Pick value"
-            data={["React", "Angular", "Vue", "Svelte"]}
-            defaultValue="React"
-          />
-        </Box>
-
-        {/* Footer */}
-        <Box style={{ marginTop: "auto", borderTop: "1px solid gray" }}>
-          {/* Your footer goes here */}
-          <Flex justify="flex-end" mt="4px">
-            <Button size="xs" onClick={() => setIsSettingsDrawerOpen(false)}>
-              Back
-            </Button>
-          </Flex>
-        </Box>
+        <Settings />
       </Drawer>
 
       {/* Page Drawer */}

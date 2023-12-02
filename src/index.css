@@ -11,3 +11,13 @@
 .mantine-Grid-inner{
     height: 100%;
 }
+
+/* .m-b5489c3c {
+    background-color: #FFF4E6;
+} */
+.mantine-Drawer-header{
+    background-color: #FFF4E6 !important;
+    height: 56px !important;
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+}
