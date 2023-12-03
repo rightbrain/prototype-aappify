@@ -26,6 +26,7 @@ import {
   IconMessage2,
   IconMessages,
   IconApps,
+  IconMenu2,
   IconSettings,
   IconLayoutSidebarLeftExpand,
   IconUsers,
@@ -221,7 +222,7 @@ const themes = [
 const tabs = {
   account: [
     { link: "", label: "Appbar", icon: IconApps },
-    { link: "", label: "Navbar", icon: IconLayoutBottombarExpand },
+    { link: "", label: "Navbar", icon: IconMenu2 },
     { link: "", label: "Drawer", icon: IconLayoutSidebarLeftExpand },
   ],
   general: [
@@ -326,28 +327,36 @@ const NavbarSegmented = ({
   // Conditionally render the footer based on the selected section
   const iconSection =
     section === "account" ? (
-      <Flex mt="4px">
-        <Tooltip label="Settings">
+      <Flex mt="4px" direction="row" align="center" justify="space-around">
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          onClick={() => setIsSettingsDrawerOpen(true)}
+          className="classes.hover-effect cursor-pointer"
+        >
           <IconSettings
-            className={classes.linkIcon}
             stroke={1.5}
-            onClick={() => setIsSettingsDrawerOpen(true)}
+            style={{ justifyContent: "center", alignItems: "center" }}
           />
-        </Tooltip>
-        <Tooltip label="Page">
+          <Text textAlign="center">Settings</Text>
+        </Flex>
+        <Flex direction="column" align="center" justify="center">
           <IconLayersSubtract
-            className={classes.linkIcon}
+            // className={classes.linkIcon}
             stroke={1.5}
             onClick={() => setIsPageDrawerOpen(true)}
           />
-        </Tooltip>
-        <Tooltip label="Template">
+          <Text textAlign="center">Page</Text>
+        </Flex>
+        <Flex direction="column" align="center" justify="center">
           <IconTemplate
-            className={classes.linkIcon}
+            // className={classes.linkIcon}
             stroke={1.5}
             onClick={open}
           />
-        </Tooltip>
+          <Text textAlign="center">Template</Text>
+        </Flex>
       </Flex>
     ) : null;
 
@@ -357,12 +366,14 @@ const NavbarSegmented = ({
         href="#"
         style={{
           display: "flex",
-          justifyContent: section === "account" ? "space-between" : "flex-end",
+          flexDirection: "column", // Change to column layout
         }}
         onClick={(event) => event.preventDefault()}
       >
         {iconSection}
-        <Button size="xs">Save</Button>
+        <Button fullWidth mt="24px" size="xs" color="#FF9209">
+          Save
+        </Button>
       </a>
     </div>
   );

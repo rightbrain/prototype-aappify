@@ -98,7 +98,7 @@ const ResponsivePhone = ({ selectedAppBarItem, selectedNavBarItem }) => {
             {selectedAppBarItem}
             {/* Appbar End */}
             <Flex
-              style={{ flex: 1, background: "var(--mantine-color-gray-2)" }}
+              style={{ flex: 1, background: "#FDFDFD" }}
             ></Flex>
 
             {/* Navbar Start */}
