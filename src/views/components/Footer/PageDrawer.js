@@ -1,53 +1,103 @@
 import React, { useState } from "react";
-import { IconPlus, IconMinus } from "@tabler/icons-react";
-import { Accordion } from "@mantine/core";
+import { Select, rem } from "@mantine/core";
+import {
+  IconChevronRight,
+} from "@tabler/icons-react";
 
 const PageDrawer = () => {
-    const groceries = [
-        {
-          emoji: "🍎",
-          value: "Apples",
-          description:
-            "Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits. They come in a variety of flavors and are great for snacking, baking, or adding to salads.",
-        },
-        {
-          emoji: "🍌",
-          value: "Bananas",
-          description:
-            "Naturally sweet and potassium-rich fruit. Bananas are a popular choice for their energy-boosting properties and can be enjoyed as a quick snack, added to smoothies, or used in baking.",
-        },
-        {
-          emoji: "🥦",
-          value: "Broccoli",
-          description:
-            "Nutrient-packed green vegetable. Broccoli is packed with vitamins, minerals, and fiber. It has a distinct flavor and can be enjoyed steamed, roasted, or added to stir-fries.",
-        },
-      ];
-    
-      const [openItem, setOpenItem] = useState(null);
-    
-      const toggleChevronIcon = (index) => {
-        setOpenItem(openItem === index ? null : index);
-      };
-    
-      const items = groceries.map((item, index) => (
-        <Accordion.Item key={item.value} value={item.value} open={openItem === index}>
-          <Accordion.Control
-            icon={openItem === index ? <IconMinus stroke={2} size={15} /> : <IconPlus stroke={2} size={15} />}
-            onClick={() => toggleChevronIcon(index)}
-          >
-            {item.value}
-          </Accordion.Control>
-          <Accordion.Panel>{item.description}</Accordion.Panel>
-        </Accordion.Item>
-      ));
-    
-      return (
-        <Accordion chevron={null}>
-          {items}
-        </Accordion>
-      );
-}
+  const icon = <IconChevronRight style={{ width: rem(16), height: rem(16) }} />;
+  return (
+    <>
+      <Select
+        h="48px"
+        checkIconPosition="right"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Angular", "Vue", "Svelte"]}
+        defaultValue="Home"
+        // clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Category List", "Vue", "Svelte"]}
+        defaultValue="Category List"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Category List", "Category with Product", "Svelte"]}
+        defaultValue="Category with Product"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Angular", "Vue", "Product List"]}
+        defaultValue="Product List"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Angular", "Vue", "Svelte", "Product Details"]}
+        defaultValue="Product Details"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Angular", "Vue", "Svelte", "Search"]}
+        defaultValue="Search"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Angular", "Vue", "Svelte", "Search", "Cart"]}
+        defaultValue="Cart"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={[
+          "Home",
+          "Angular",
+          "Vue",
+          "Svelte",
+          "Search",
+          "Dashboard / Profile",
+        ]}
+        defaultValue="Dashboard / Profile"
+        clearable
+      />
+      <Select
+        h="48px"
+        mt="16px"
+        rightSection={icon}
+        placeholder="Pick value"
+        data={["Home", "Angular", "Vue", "Svelte", "Search", "Order"]}
+        defaultValue="Order"
+        clearable
+      />
+    </>
+  );
+};
 
-export default PageDrawer
-
+export default PageDrawer;

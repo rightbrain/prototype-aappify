@@ -1,27 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Flex,
-  Stack,
   Text,
-  ActionIcon,
   Title,
-  Group,
-  Slider,
   ColorPicker,
+  ActionIcon,
+  Modal,
   Input,
   Select,
   Button,
 } from "@mantine/core";
-import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
-import {
-  IconCircleXFilled,
-  IconAlignCenter,
-  IconAlignJustified,
-  IconCloudDownload,
-  IconPhotoPlus,
-} from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
+import { Dropzone } from "@mantine/dropzone";
+import { IconCloudDownload, IconPhotoPlus, IconColorPicker } from "@tabler/icons-react";
 
 const Settings = () => {
+  const [opened, { open, close }] = useDisclosure(false);
+  const [currentColorType, setCurrentColorType] = useState("");
+
+  const openColorPickerModal = (colorType) => {
+    setCurrentColorType(colorType);
+    open();
+  };
   return (
     <>
       <Dropzone
@@ -64,8 +64,36 @@ const Settings = () => {
         placeholder="Secondery Font"
         data={["Sans Serif", "Slab Serif", "Serif"]}
       />
-      <Select w="402px" mt="16px" placeholder="Primary Font Color" />
-      <Select w="402px" mt="16px" placeholder="Secondery Font Color" />
+      {/* <Select w="402px" mt="16px" placeholder="Primary Font Color" /> */}
+      <Flex mt="8px" direction="column" h="73px" style={{borderBottom: "1px solid #E9E9E9"}}>
+        <Flex justify="flex-start">
+          <Text fw={400}>Primary Font Color</Text>
+        </Flex>
+        <Flex justify="flex-end" mt="8px">
+          <ActionIcon variant="filled" aria-label="Settings">
+            <IconColorPicker
+              style={{ width: "70%", height: "70%" }}
+              onClick={() => openColorPickerModal("Primary")}
+              stroke={1.5}
+            />
+          </ActionIcon>
+        </Flex>
+      </Flex>
+      {/* <Select w="402px" mt="16px" placeholder="Secondery Font Color" /> */}
+      <Flex mt="8px" direction="column" h="73px" style={{borderBottom: "1px solid #E9E9E9"}}>
+        <Flex justify="flex-start">
+          <Text fw={400}>Secondery Font Color</Text>
+        </Flex>
+        <Flex justify="flex-end" mt="8px">
+          <ActionIcon variant="filled" aria-label="Settings">
+            <IconColorPicker
+              style={{ width: "70%", height: "70%" }}
+              onClick={() => openColorPickerModal("Secondary")}
+              stroke={1.5}
+            />
+          </ActionIcon>
+        </Flex>
+      </Flex>
 
       <Flex
         h="139px"
@@ -118,6 +146,35 @@ const Settings = () => {
           Preview
         </Button>
       </Flex>
+
+      {/* ColorPicker Modal */}
+      <Modal
+        opened={opened}
+        onClose={close}
+        title={`${currentColorType} Font Color`}
+        radius="md"
+      >
+        <ColorPicker
+          fullWidth
+          format="hex"
+          swatches={[
+            "#25262b",
+            "#868e96",
+            "#fa5252",
+            "#e64980",
+            "#be4bdb",
+            "#7950f2",
+            "#4c6ef5",
+            "#228be6",
+            "#15aabf",
+            "#12b886",
+            "#40c057",
+            "#82c91e",
+            "#fab005",
+            "#fd7e14",
+          ]}
+        />
+      </Modal>
     </>
   );
 };

@@ -60,8 +60,9 @@
     }
   }
 }
-.hover-effect:hover {
-  background-color: #4ea8e8; /* Change this to your desired background color */
+
+.hoverEffect:hover {
+  background-color: #FF9209; /* Change this to your desired background color */
 }
 
 .footer {
@@ -83,4 +84,15 @@
   .link {
     padding: var(--mantine-spacing-xs);
   }
+}
+
+/* New styles for hover effect */
+.test:hover {
+  background-color: ""; /* Your desired background color */
+  cursor: pointer;
+}
+
+/* Footer hover effect */
+.footer:hover {
+  background-color: "";/* Your desired background color */
 }

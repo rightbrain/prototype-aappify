@@ -333,7 +333,7 @@ const NavbarSegmented = ({
           align="center"
           justify="center"
           onClick={() => setIsSettingsDrawerOpen(true)}
-          className="classes.hover-effect cursor-pointer"
+          // className={classes.hoverEffect}
         >
           <IconSettings
             stroke={1.5}
@@ -355,7 +355,7 @@ const NavbarSegmented = ({
             stroke={1.5}
             onClick={open}
           />
-          <Text textAlign="center">Template</Text>
+          <Text textAlign="center">Theme</Text>
         </Flex>
       </Flex>
     ) : null;
@@ -371,7 +371,7 @@ const NavbarSegmented = ({
         onClick={(event) => event.preventDefault()}
       >
         {iconSection}
-        <Button fullWidth mt="24px" size="xs" color="#FF9209">
+        <Button fullWidth mt="24px" h="48px" size="16px" color="#FF9209">
           Save
         </Button>
       </a>
@@ -588,24 +588,11 @@ const NavbarSegmented = ({
         opened={isPageDrawerOpen}
         onClose={() => setIsPageDrawerOpen(false)}
         position="left"
-        size={300}
+        size={450}
         overlayProps={{ backgroundOpacity: 0 }}
         transitionProps={transitionProps}
       >
-        {/* Content */}
-        <Box style={{ height: "460px", overflow: "auto" }}>
-          <PageDrawer />
-        </Box>
-
-        {/* Footer */}
-        <Box style={{ marginTop: "auto", borderTop: "1px solid gray" }}>
-          {/* Your footer goes here */}
-          <Flex justify="flex-end" mt="4px">
-            <Button size="xs" onClick={() => setIsPageDrawerOpen(false)}>
-              Back
-            </Button>
-          </Flex>
-        </Box>
+        <PageDrawer />
       </Drawer>
 
       {/* Page Modal */}
@@ -647,7 +634,7 @@ const NavbarSegmented = ({
                 </Carousel.Slide>
               ))}
           </Carousel> */}
-          <div style={{ height: 400, display: "flex" }}>
+          <Box style={{ height: 400, display: "flex" }}>
             <Carousel
               height="100%"
               style={{ flex: 1 }}
@@ -671,7 +658,7 @@ const NavbarSegmented = ({
                   </Carousel.Slide>
                 ))}
             </Carousel>
-          </div>
+          </Box>
         </Modal>
 
         {/* End Preview Modal */}
