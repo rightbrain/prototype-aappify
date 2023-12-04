@@ -9,14 +9,19 @@ import {
   Input,
   Select,
   Button,
+  rem
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Dropzone } from "@mantine/dropzone";
-import { IconCloudDownload, IconPhotoPlus, IconColorPicker } from "@tabler/icons-react";
+import { IconCloudDownload, IconPhotoPlus, IconColorPicker, IconChevronDown, IconChevronUp, IconPencilMinus } from "@tabler/icons-react";
 
 const Settings = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentColorType, setCurrentColorType] = useState("");
+
+  const icon = <IconChevronDown style={{ width: rem(16), height: rem(16) }} color="#202020" />;
+
+  const titleIcon = <IconPencilMinus style={{ width: rem(16), height: rem(16) }} color="#202020" />;
 
   const openColorPickerModal = (colorType) => {
     setCurrentColorType(colorType);
@@ -51,16 +56,18 @@ const Settings = () => {
           </Text>
         </Flex>
       </Dropzone>
-      <Input mt="19px" w="402px" placeholder="Title Name" />
+      <Input mt="19px" w="402px" placeholder="Title Name" rightSection={titleIcon} />
       <Select
         w="402px"
         mt="16px"
+        rightSection={icon}
         placeholder="Primary Font"
         data={["Sans Serif", "Slab Serif", "Serif"]}
       />
       <Select
         w="402px"
         mt="16px"
+        rightSection={icon}
         placeholder="Secondery Font"
         data={["Sans Serif", "Slab Serif", "Serif"]}
       />
