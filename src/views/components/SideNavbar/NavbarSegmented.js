@@ -7,15 +7,12 @@ import {
   Modal,
   Text,
   Grid,
-  rem,
-  Select,
   ScrollArea,
   Card,
   Group,
   Image,
   SimpleGrid,
   Center,
-  Tooltip,
   Box,
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
@@ -31,9 +28,7 @@ import {
   IconLayoutSidebarLeftExpand,
   IconUsers,
   IconFileAnalytics,
-  IconLayoutBottombarExpand,
   IconReceiptRefund,
-  IconLock,
   IconLayersSubtract,
   IconTemplate,
 } from "@tabler/icons-react";
@@ -240,7 +235,7 @@ const NavbarSegmented = ({
   selectAppBar,
   setSelectAppBar,
   selectAppBar2,
-  setSelectAppBar2,
+  setSelectAppBar2, 
   selectAppBar3,
   setSelectAppBar3,
   onItemClick,
@@ -269,8 +264,6 @@ const NavbarSegmented = ({
   const [isCustomersDrawerOpen, setIsCustomersDrawerOpen] = useState(false);
   const [isRefundsDrawerOpen, setIsRefundsDrawerOpen] = useState(false);
   const [isFilesDrawerOpen, setIsFilesDrawerOpen] = useState(false);
-
-  // Reviews Messages Customers Refunds Files
 
   const [opened, { open, close }] = useDisclosure(false);
 

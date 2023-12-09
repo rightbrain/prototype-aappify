@@ -36,9 +36,9 @@ const Settings = () => {
         style={{
           border: "1px dashed #FF9209",
           borderRadius: "5px",
-          display: "flex", // Make Dropzone a flex container
-          justifyContent: "center", // Center content horizontally
-          alignItems: "center", // Center content vertically
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Flex
@@ -124,9 +124,9 @@ const Settings = () => {
           style={{
             border: "1px dashed #FF9209",
             borderRadius: "5px",
-            display: "flex", // Make Dropzone a flex container
-            justifyContent: "center", // Center content horizontally
-            alignItems: "center", // Center content vertically
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Flex

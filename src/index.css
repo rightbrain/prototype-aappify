@@ -2,9 +2,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-#root{
+/* #root{
     height: 100%;
-}
+} */
 .h-full{
     height: 100%;
 }
@@ -20,4 +20,8 @@
     height: 56px !important;
     margin-top: 24px !important;
     margin-bottom: 24px !important;
+}
+
+.mantine-Drawer-content{
+    margin-top: 64px !important;
 }
